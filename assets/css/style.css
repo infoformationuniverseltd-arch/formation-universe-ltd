@@ -1,0 +1,593 @@
+/* ==========================================================================
+   FORMATION UNIVERSE LTD — MASTER DESIGN SYSTEM (REVISED PREMIUM SPEC)
+   Palette derived from official logo:
+   - Warm Skin / Champagne Ivory: #FAF5EE, #F6EFE5, #EFE3D3
+   - Deep Obsidian / Charcoal: #0B1410, #141F1A, #1D2A23
+   - Official Brand Emerald Green: #00A844, #00C853, #10B981
+   ========================================================================== */
+
+:root {
+  /* Skin & Canvas */
+  --fu-skin-bg: #f7efe4;
+  --fu-skin-surface: #fbf7f1;
+  --fu-skin-card: #ffffff;
+  --fu-skin-border: #e3d2be;
+  --fu-skin-border-light: rgba(227, 210, 190, 0.55);
+  --fu-skin-alt: #f1e4d3;
+
+  /* Typography */
+  --fu-text-headline: #0b1410;
+  --fu-text-body: #2d3b33;
+  --fu-text-muted: #5e7065;
+  --fu-text-light: #88998e;
+
+  /* Emerald Brand Accents */
+  --fu-emerald-500: #00a844;
+  --fu-emerald-vivid: #00c853;
+  --fu-emerald-dark: #008234;
+  --fu-emerald-light: #10b981;
+  --fu-emerald-soft: rgba(0, 168, 68, 0.1);
+  --fu-emerald-glow: rgba(0, 168, 68, 0.25);
+
+  /* Obsidian Contrast */
+  --fu-dark-bg: #0b1410;
+  --fu-dark-card: #121c17;
+  --fu-dark-border: rgba(255, 255, 255, 0.12);
+
+  /* Layout & Geometry */
+  --fu-radius-btn: 9999px;
+  --fu-radius-card: 18px;
+  --fu-btn-height: 44px;
+  --fu-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --fu-font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--fu-font-sans);
+  background-color: var(--fu-skin-bg);
+  color: var(--fu-text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--fu-skin-bg);
+  color: var(--fu-text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fu-font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--fu-text-headline);
+  word-wrap: break-word;
+}
+
+::selection {
+  background: var(--fu-emerald-vivid);
+  color: #000000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fu-emerald-500);
+  outline-offset: 3px;
+}
+
+/* Background Pattern (Subtle Dotted World Matrix) */
+.bg-skin-pattern {
+  background-color: var(--fu-skin-bg);
+  background-image: radial-gradient(#d6c2ab 1.1px, transparent 1.1px);
+  background-size: 22px 22px;
+}
+
+.skin-glow-radial {
+  background: radial-gradient(circle 600px at 50% 15%, rgba(241, 228, 211, 0.95), transparent 75%);
+}
+
+/* Sticky Header */
+.skin-nav {
+  background: rgba(247, 239, 228, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--fu-skin-border);
+}
+
+/* ==========================================================================
+   UNIFIED BUTTON COMPONENT SYSTEM (Standardized 44px Height & Padding)
+   ========================================================================== */
+.btn-primary, .btn-secondary, .btn-whatsapp {
+  height: var(--fu-btn-height);
+  min-height: var(--fu-btn-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--fu-font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  padding: 0 1.5rem;
+  border-radius: var(--fu-radius-btn);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00c853 0%, #00963d 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 12px -2px rgba(0, 168, 68, 0.35);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #10b981 0%, #00a844 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -2px rgba(0, 168, 68, 0.5);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--fu-text-headline);
+  border: 1px solid var(--fu-skin-border);
+  box-shadow: 0 2px 6px rgba(100, 75, 50, 0.05);
+}
+
+.btn-secondary:hover {
+  background: #faf4eb;
+  border-color: var(--fu-emerald-500);
+  color: var(--fu-emerald-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(100, 75, 50, 0.1);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 3px 12px -2px rgba(37, 211, 102, 0.38);
+}
+
+.btn-whatsapp:hover {
+  background: #20ba59;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -2px rgba(37, 211, 102, 0.55);
+}
+
+/* Floating WhatsApp Widget (Refined 48px size with balanced 24px icon) */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.floating-whatsapp-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  animation: pulse-whatsapp 2.5s infinite;
+  transition: transform 0.2s ease;
+}
+
+.floating-whatsapp:hover .floating-whatsapp-btn {
+  transform: scale(1.08);
+}
+
+.floating-whatsapp-tooltip {
+  background: #0b1410;
+  border: 1px solid var(--fu-emerald-500);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.floating-whatsapp:hover .floating-whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes pulse-whatsapp {
+  0% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45), 0 0 0 12px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ==========================================================================
+   CARDS & GRID ALIGNMENT (Equal Heights, No Overlaps, Clean Padding)
+   ========================================================================== */
+.fu-skin-card, .fu-card {
+  background: var(--fu-skin-card);
+  border: 1px solid var(--fu-skin-border);
+  border-radius: var(--fu-radius-card);
+  box-shadow: 0 3px 16px -4px rgba(110, 80, 50, 0.05);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fu-skin-card::before, .fu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.fu-skin-card:hover, .fu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--fu-emerald-500);
+  box-shadow: 0 14px 30px -8px rgba(100, 75, 50, 0.1), 0 0 16px -4px var(--fu-emerald-glow);
+}
+
+.fu-skin-card:hover::before, .fu-card:hover::before {
+  background: linear-gradient(90deg, transparent, var(--fu-emerald-500), transparent);
+}
+
+.brand-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.fu-dark-card {
+  background: var(--fu-dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--fu-radius-card);
+  color: #ffffff;
+  height: 100%;
+}
+
+/* Badges */
+.badge-emerald {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(0, 168, 68, 0.1);
+  color: #007a31;
+  border: 1px solid rgba(0, 168, 68, 0.25);
+}
+
+/* Accordions */
+.fu-accordion-item {
+  background: #ffffff;
+  border: 1px solid var(--fu-skin-border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(100, 75, 50, 0.03);
+  transition: all 0.2s ease;
+}
+
+.fu-accordion-item.active {
+  border-color: var(--fu-emerald-500);
+  background: #fbf8f3;
+}
+
+.fu-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.4rem;
+  background: none;
+  border: none;
+  color: var(--fu-text-headline);
+  font-family: var(--fu-font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.fu-accordion-header:hover {
+  color: var(--fu-emerald-500);
+}
+
+.fu-accordion-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f1e4d3;
+  color: #0b1410;
+  transition: transform 0.28s ease;
+  flex-shrink: 0;
+  margin-left: 0.8rem;
+}
+
+.fu-accordion-item.active .fu-accordion-icon {
+  transform: rotate(180deg);
+  background: var(--fu-emerald-500);
+  color: #ffffff;
+}
+
+.fu-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.4rem;
+  color: var(--fu-text-body);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.fu-accordion-item.active .fu-accordion-body {
+  max-height: 700px;
+  padding-bottom: 1.4rem;
+}
+
+/* Tabs */
+.fu-tab-button {
+  height: 40px;
+  padding: 0 1.35rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--fu-text-muted);
+  background: #ffffff;
+  border: 1px solid var(--fu-skin-border);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.fu-tab-button:hover {
+  color: var(--fu-text-headline);
+  background: #faf4eb;
+  border-color: #d1bda5;
+}
+
+.fu-tab-button.active {
+  color: #ffffff;
+  background: var(--fu-emerald-500);
+  border-color: var(--fu-emerald-500);
+  font-weight: 700;
+  box-shadow: 0 3px 12px -2px rgba(0, 168, 68, 0.35);
+}
+
+.fu-tab-pane {
+  display: none;
+}
+.fu-tab-pane.active {
+  display: block;
+}
+
+/* Forms */
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--fu-skin-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--fu-text-headline);
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--fu-emerald-500);
+  box-shadow: 0 0 0 3px rgba(0, 168, 68, 0.15);
+  outline: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--fu-text-headline);
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   FORMATION PLANET FORGE VISUALS & RADAR ORBIT SYSTEM
+   ========================================================================== */
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #00c853 0%, #10b981 50%, #008234 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.radar-spin-ring {
+  animation: radar-orbit-spin 36s linear infinite;
+  transform-origin: center center;
+}
+
+.radar-counter-node {
+  animation: radar-orbit-counter 36s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes radar-orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes radar-orbit-counter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.planet-card-hover {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.planet-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--fu-emerald-500);
+  box-shadow: 0 16px 36px -8px rgba(0, 168, 68, 0.16), 0 0 16px -4px rgba(0, 168, 68, 0.12);
+}
+
+.hero-visual-card {
+  background: var(--fu-skin-card);
+  border: 1.5px solid var(--fu-skin-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -6px rgba(100, 75, 50, 0.08);
+  transition: all 0.25s ease;
+}
+
+.hero-visual-card:hover {
+  border-color: #d1bda5;
+  box-shadow: 0 14px 36px -6px rgba(100, 75, 50, 0.12);
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.65rem;
+  background: #faf4eb;
+  border: 1px solid #ebdcca;
+  transition: all 0.2s ease;
+}
+
+.hero-feature-item:hover {
+  background: #ffffff;
+  border-color: var(--fu-emerald-500);
+}
+
+/* Mobile Drawer */
+#mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  border-left: 1px solid var(--fu-skin-border);
+  z-index: 1000;
+  padding: 1.75rem 1.5rem;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -8px 0 28px rgba(0, 0, 0, 0.15);
+}
+
+#mobile-menu.open {
+  display: flex;
+}
+
+#mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 20, 16, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#mobile-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Toast */
+.fu-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0b1410;
+  border: 1px solid var(--fu-emerald-500);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  font-weight: 600;
+  font-size: 0.88rem;
+  opacity: 0;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fu-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Scrollbar utilities */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pricing Estimator */
+.calculator-pkg-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.calculator-pkg-btn.active {
+  border-color: var(--fu-emerald-500) !important;
+  background-color: rgba(0, 168, 68, 0.08) !important;
+  box-shadow: 0 0 0 2px var(--fu-emerald-500);
+}
+.glow-emerald-sm {
+  box-shadow: 0 4px 18px -2px rgba(0, 168, 68, 0.35);
+}
+.glow-emerald-lg {
+  box-shadow: 0 12px 36px -6px rgba(0, 168, 68, 0.28);
+}
+
